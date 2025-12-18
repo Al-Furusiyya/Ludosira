@@ -1,16 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.Ludosira" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+    <style name="Base.Theme.Ludosira" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/governor_bay_500</item>
+        <item name="colorOnPrimary">@color/governor_bay_950</item>
+
+        <item name="colorSecondary">@color/rio_grande_700</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <item name="android:colorBackground">@color/governor_bay_950</item>
+        <item name="colorSurface">@color/governor_bay_950</item>
+
+        <item name="colorOnBackground">@color/governor_bay_50</item>
+        <item name="colorOnSurface">@color/governor_bay_50</item>
+
+        <item name="android:windowLightStatusBar">true</item>
     </style>
+
+    <style name="Theme.Ludosira" parent="Base.Theme.Ludosira" />
 </resources>
