@@ -14,9 +14,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.example.ludosira.BuildConfig
-import com.example.ludosira.gamelibrary.data.GameDto
+import com.example.ludosira.gamelibrary.data.GameData
 import com.example.ludosira.gamelibrary.presentation.GameList
 import com.example.ludosira.core.network.RetrofitClient
+import com.example.ludosira.gamelibrary.presentation.GameScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,43 +32,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun GameScreen() {
-    // 1. State to hold the list of games
-    var games by remember { mutableStateOf<List<GameDto>>(emptyList()) }
-    var isLoading by remember { mutableStateOf(true) }
-    var errorMessage by remember { mutableStateOf<String?>(null) }
-
-    // 2. Get the API key from BuildConfig
-    val apiKey = BuildConfig.API_KEY
-
-    // 3. Trigger API call when the screen loads
-    LaunchedEffect(Unit) {
-        try {
-            val response = RetrofitClient.service.getGames(apiKey)
-            games = response.games
-            isLoading = false
-        } catch (e: Exception) {
-            Log.e("MainActivity", "Error fetching data", e)
-            errorMessage = e.localizedMessage
-            isLoading = false
-        }
-    }
-
-    // 4. UI Logic
-    if (isLoading) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            CircularProgressIndicator()
-        }
-    } else if (errorMessage != null) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = "Error: $errorMessage")
-        }
-    } else {
-        // Render the list from GameLibraryCards.kt
-        GameList(games = games)
     }
 }

@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.ludosira.R
-import com.example.ludosira.gamelibrary.data.GameDto
+import com.example.ludosira.gamelibrary.data.GameData
 
 @Composable
-fun GameList(games: List<GameDto>) {
+fun GameList(games: List<GameData>) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -34,7 +34,7 @@ fun GameList(games: List<GameDto>) {
 }
 
 @Composable
-fun GameCard(game: GameDto) {
+fun GameCard(game: GameData) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -57,7 +57,6 @@ fun GameCard(game: GameDto) {
                 contentScale = ContentScale.Crop
             )
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(text = "ID: ${game.id}")
                 Text(text = "Name: ${game.name}")
             }
         }
